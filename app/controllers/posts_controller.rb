@@ -10,10 +10,15 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(post_params)
+		@post = Post.new(params[:post].permit(:title, :text))
 
-		@post.save
-		redirect_to @post
+		if @post.save
+			redirect_to @post
+		else
+			@error = "Please make sure your title is 5 characters long"
+			@test = true
+			render 'new'
+		end
 	end
 
 	def show
