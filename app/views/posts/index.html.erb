@@ -1,4 +1,4 @@
-<%= link_to 'Home', controller: "posts" %>
+<%= link_to 'Home', controller: "welcome" %>
 <%= link_to 'New Post', new_post_path %>
 
 <h1>All the posts</h1>
@@ -7,12 +7,15 @@
 	<tr>
 		<th>Title</th>
 		<th>Text</th>
+		<th colspan="2"></th>
 	</tr>
 
 	<% @posts.each do |p| %>
 	<tr>
 		<td><%= p.title %></td>
 		<td><%= p.text %></td>
+		<td><%= link_to 'Show', p %></td>
+		<td><%= link_to 'Edit', edit_post_path(p) %></td>
 	</tr>
 	<% end %>
 </table>
